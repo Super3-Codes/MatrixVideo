@@ -1,0 +1,50 @@
+const density = "アァカサタナハマヤャラワガザダバパイィキシチニヒミリヰギジヂビピウゥクスツヌフムユュルグズブヅプエェケセテネヘメレヱゲゼデベペオォコソトノホモヨョロヲゴゾドボポヴッン'";
+
+let gloria;
+
+let video;
+let asciiDiv;
+
+// function preload(){
+//     gloria = loadImage('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAANgAAADpCAMAAABx2AnXAAAAzFBMVEUjHyAREiT///8AAAAgHCEgHB0aGBkbGRoXFRYdGRocGBkODyIeGxwVExQhHB0VDxEJAAATDA7z8/MyLzDr6+tLSEkmIiMAABcAABwLAAP29vZiYGE6NzgAABTIx8fS0tKQj4+enp5DQULf399wbm+7u7uBgIAuKiuqqqqzsrLi4uJQTk9ZV1iGhYWXlpdfXF0fIC9qanN6d3hramqMjZR+f4dZWmMpKjhBQUwAAB8AAAx0dH2cnKI0M0BVVl5KSlQmJjQ3OUOkpKsaGyuHgHssAAAO40lEQVR4nO2dC3+iutaHkbzZlWgJCFJRBG8oKtKqaN211+n3/04nXFSUKO05U2HmzTPbar3w4+/KumQldHMcg8FgMBgMBoPBYDAYDAaDwWAwGAwGg8FgMBgMBoPBYDAY/+8QoQjDBxBC8b8+CoTC//Dp3w/SdU1RtDKQkTbioAxk4ZsHuBU5WJYkOFJGogx/5iy/DQT1br/G882J2XEVu6b2zVkP3H710xyHJXeogHLLschR+Jqt/ejpfhnM2fwB1YzurRZAApBQ1qdRD4LBhJ+NnOCrsexO04IyKoLN9PsmT8UyDMueSpc/DY0O6PJd1SHv7xi6BBx+7C3qmp79lfwwuEWXFTBb8LwDLn4cmG6H7yz5ptMjjilCQ52owRfVd+6lXH1NVM7r4vkxHygTtDOnSAKowru8BcbOCMThRtbRqN7qmE1+0sF6jhESupNL0gimNupimjKhrkhd3uJdPEoqEEVUlgF2ied2JHw1ISkwzlLW7IzHtAGJhyOsEt+SOIpsiAD0mmrr8kj+UeRZhrCAHiWxCXUziKfTc2FClDSHjOTcPA2OviCMajJgkaw1lS8cWupNLPzNZP/7CM4vixpNmN7lVXTZixBw+lpeyvAyKUE1ne447XZ1yoDDC36oZx0dLCxq6LkG4FB6TJyxVfMMrzPr2keJe0ixDB7wy6OnIbrFt6TswHLia9BdO1P9DwGlnTJVDcSBwdg07U7v3jwI8ygnh4d8K2lIzXAHi8FUA55XT+QwPJ3lFfU1MEwYx1RjLYvOwZRjkB5QunMULbERfRHqmIztSVfZV2N4Os3HzURDpdSLfTAcerW96zmzEYgrEIRvNSAJHOirBztKYOruwlB0tO5eDapfX1SAiFV6LCQnlwwjfa8XvB3edxxbtQ2w4J2dVaDsHBRFZhu6o1BU4HAwp5kM6J8TFpaLEXbL6LXqI06b9mQZ6MM+0WzsjCKbR58ikx6AA/e7Bfcdb2HkI4sMI+esMH5nsg4oQ4gEjdNgMCBFGS3G011QKC+scSIbDkH0QjBVG7vwNrfigySkLNKlB8SJOZcIwMHs9fi9SLP6Sq4TM1HI0tXUMmYgUDr4qTUIyyyk1GyQ83wTmBdEBdhZVTo+KqXviR5BU838KuAY5GYIW2SlWN2ZTXeeapkOSQPYquWuK7sQppWKR4gG2DUZxgD0IJk0ODUvx9lYDJpeFuZm+op4GM6TcHoJwaiZ0TG5BlLnorDOhVlXjJ5IhgsyFHWlvuQX2Z/7acCFXEbcJvurL8/c+BBqjVegFBqwKRTAzS7abJk99ZBBWFFZPWE09DBeNFtGfdbKu7/ICfrF+NHsZU49xJE6XJD5wECGeAQ5MOwDlF9fYAfE5+vFkNoo8xwhljFwVTUetsDOzH5XANiXdZ1zM3RakeBRTYsXpOTmIMe+YgS6vyhKDYYpJcJBvEythyHDiJ/SPTX35QnpYk3V7wEyfZmkhZGP2akn94FQ1L6SJn4WXLskjNSKPfJjWT75FHInvXNuBHVS8FtqXn2cGDGzaWr3KZVweXghVo6tvtk/3ye+DtnCgll/LZVtL/RC5Q5vd02+m+9YFDmrnjVz4b9SMSYA5gyAxTjnschN5S90uruUs4T0uIcBqPOaKNfz3kSAuHLWnIznzXSk0OFIpqwLlheWB/pjicu98jg7c1FnreFulE5OhUG9W1P7HkqfPpnE1FTqUsbVkbpUXVhHElieEQbsvqsYM1NL2Uzo8V370J7LEZJNaUwxBw1Vc6lD8XYxBkj3FqNxenMBqNlgnH9tf65YDNsxVShEs7XTOgJ1SfWOWtOyu0wpAGZNM9z8LXamnbPQFCRLvVHPCOZao+MRJxputa4DbcHJaWGSQ7JDAfbo0IN9s6+CgeO4Lm/1KdHeQFDp2g6ptEapA8oedU3t2gh1qsH4YEIsK1FYsVJZDAatbkmOHp1AKg8v7wqYC9fw+tSoSIjXmJrfW0suiDDZq+HL7ZzvNpxul9RC5dqUB10dXlhNCtYBv3E4ktcEI7svfgWg0hNPtg+cGuwbkUDuApIG1C/07H6ecIYPzuv61iQftfqaRIqqjD2B1+OCMOdbJ6kPa859N1x0KQLy4LywQ9UHhS90d/VesE2kCE5GEMTzjY/d6gISNGNaV7jMgSlIXH3YKUCGPlouSXtYvNKl3S+Hi8GA3LI3OECEC6GLA+cSNGEa9aegPPWsiRps8zYKkHy/Br7nz+7IXEYqROkwA2h2LvtP1pr11RDl2uBcl3saVRBQPkrglxf1Rrk3O2LwbNY7o6sVV0byyToTbdfpHjQoiDC01M+UinvLnAaXi+1rUStGSAz2gtI3VNX2u97CnbL7p7OWb/VxARYzAyC958F39yWHNObN3bJnD9Qyqkc8K8I8kzu/kKTsPQkv+IkeLceaYMrzZ1qlMcKU0oXMAzyk6lITZ0emNW45fLZPkl7GVgfRmBTDYmeEJcs9EbYGca4zW1mXCkBFVQrhZJheATuJWTDUEsWkmTE9Fg3eKIQwVCcZKy1slgx9+HBJ1iRrrZ3MWpVCpDIo8zZllew49Mm9uEs3RllTLWCrxfAxEhoGlKbpSUxHwO2qZqeXva8NFGU2RhKPSxmKqWSEQEf/wrWpaHo8inMEKgZFWLq8EE6XlanGCy4PKchQ5OAtZSg6EgkrR6cunlzthqY0ZSTIFsViXNAKTEHKB3xktVswXoDEUBR6C1ocQS36pVm5QAJjikkgrLVXJgCX1MqmIu2tJHt1mseR7DHJ7SqkFIByJQjgkNtZhlFQRMCwiar7Ce/hyGoC6MyoeRgqfGG6b/S1pBaCvUHXEYAEpKXJW67MiXio8uM6kCTQM5cL6iIY5ArTfePCicmpi7UQB0cLsJhYVr+pOj3AaQQEWnazRp6y6jJ9QhkUMrxRFJOd1os1FwTtKdwREOi5dQEAHOrSNCgBMJq6ChDrA+rZh32EwpjsNCzWo6Bxu+gZLbll1lR7VtdwGSNl6RD72YZQr7boC+jRyk3mrvZrcexkuy8ctZajGU67H5mWDWSPeu6x7Qsy1zy9Jnq4i/KoKw0H+1bOYe7SGfZE6rIl3F01XhSTQSUZ8PelA55N9U5r1+zZN33GQwN3qFlsvzhK2QCSD0e7Pez99XxojEHf2w3A+H5iD5FMLS/kfdHZLEqSRr2kC+0DuWRDTunHimI/nKhdWVzSgj1SdqPVU7+1E/AnSYaPw1wMDztYdgaRstjZFmaPk0wjPUsWpf0xLKMobdMoscYGO4wyiPoKp4wiz4lHq2JoaEDLVMllG7cYfY8AMN6NteQ13fLMkkRumhBmydqtoVL690fbAwuTokmSHjXjbu+Re0hWfyrKoaao7rqH4oLvUILe0aaKZn4XnqaQh4vI94/+MAyUrBrSQmWhsBYWXZ524Zt83J9cfvXPQF0BObq0vnl81pBMMBEXxLvA08ZA0+0BNdQf74IpTCILkMOrh0/3vZaXqq6JPbPp1SZdrIn1Gm3V8nR74Lc29Pw0ojxJW4zoVW2gcUE1grAGsUrNzfrpSnaRLMaVw8CWErbgbU0O5y2iNJ3w1NZ8ausBteTKDRAUw6mdysHO7O5UkPTRkgSQGbV5r5+u0C+LkqEjgEfZFgblMMM1w0K5S3UesXqiqzjdxRjQobTPRNCNq3+VGhHjeZia3OGT+4VWp4ChWk5HPaAMHdvuDvCZ0yWjtVuXcGJ/QXHapjuk5T3F70UsAaDjMwtEgsLfA0Rynl3YocgFG8K+/RFgDsPwnqgXU1fT/YkAL/ZLUVP5vhOarQhXgfyvaJ29Q0kTG0jh304qUuXx36Ic9vHJTtATILPWwvSpfhdhWaJ7hdh7/1sJyy2S1f4GF0tTXhaquP99oOV3duv/QUAlfZXS30FxGh4MBoPBYDAYDAaDwWBcgeCCKhj8b1r2VBOP/4iJMkwjxjciRhCqsaJqVQiJXtu/5UhuMaAoqlarNzeCcBMS393c/BNycwx5F3l3lXKQwkgS9qBQBUL/fIHgXeTtaPfZGyF3eUnzBBa6qUZ2QWgvqbzntnyb4PD8Tl7wX2RBcpRqNWnEvHTFAy88o39CQyF08095J+r2LAdx5fBz0UCthiP4aHBeV1UsrBpGg2p0LkTYzX6MJax1WVdsNhS7X2T8MNbE4s79Wb8fVLfTFhitGgS+4OtOelA5g8RbD4EkMlc1B3udiEuE68j/w3M8kXiORHiMckBBAmPEaSY6xMhonJL7fdCPJESjLXg+1lMtlqITQnfYW1A8MSeVw+vRAf4sdqedsMWfJoHBYDAYDAaDwWAwGAwGg8FgMBgMBoPxt/B/fylc6S+FCfvT+NuFVeJbKXFfKjUapcrhN/Ko0jj8WnAiYZWPSqny+Bk9ftm9drd+bT9+7KR8vlUq7+uXP0VZJKwxnzfu/Lv2XemuDfzPRrt9V2kD59evX9tn0Aag0gDgxQLgw98UVFjqtGKLPfjth9XWW4GVv109v/jP27fnt/4bAHN17VvW48ay3swNub+qxSrEESq7n6FbRL8FOuLniXM0Sv82Ai9plMjjymclKazU9kvz+fZuu50D4P/rl8B2+/q0sfqrufdugbVjfoB31WpUKtfUdTd/37Yf2o/vL433RmW1enkvfTYe3j7Iub+TZx4qD+353H8h/1aPz5vVCvhv/mb+3E4Ka6zX/tqfz1ebRtuvPD/dzVdvjSfQ6K+8tzH4sM2n9uPEerjuOKy8zVf+L/Jlr1bbuT8PHviv2/mvjyeiYEte8j/mDf959frLB8+bZ//Rf51vPraNpLBK5dfq0688Pj5XHtbr+brkr18bz1vf3PQfra259carjfnWf7qqsFLbfvTWq/Xr1iff89on6gJ5/rrya/M8f34jQj+Dn8/+84a85K+d+fxtFY/FXR5rzB8aj/62Qm5PczD3Hx5fKq/e6q69fvvXX7ef5v7jHGyvHDoqD5XK5mnz+dLYlD4fNncvD493m/fSy8PDR+Wj9PlO7javn5vGy2dp8/TyeVf63Lw8HvsYUUY88a4R3si/u8CbGiQ2kucrbWLcRrsSOOdVdUWpM/4Xho7olqAU/yhVSrvXSifC/jaYsD+Nv1bYfwCW92zf2i1lOwAAAABJRU5ErkJggg==');
+// }
+
+
+function setup(){
+  noCanvas();
+
+  video = createCapture(VIDEO);
+  video .size(68,48);
+  asciiDiv = createDiv();
+}
+
+function draw(){
+
+  // background(0);
+  // image(gloria,0,0,width,height);
+
+  // let w = width / gloria.width;
+  // let h = height / gloria.height;
+  // //check the brightness of the pixel for each image
+  // //each pixel has an array of  RGBA value 
+  // //pixelIndex is used to get the currentIndex 
+ video.loadPixels();
+  let asciiImage = "";
+  for (let j = 0; j < video.height; j++) {
+    for (let i = 0; i < video.width; i++) {
+      const pixelIndex = (i + j * video.width) * 4;
+      const r = video.pixels[pixelIndex + 0];
+      const g = video.pixels[pixelIndex + 1];
+      const b = video.pixels[pixelIndex + 2];
+      const avg = (r + g + b) / 3;
+      const len = density.length;
+      const charIndex = floor(map(avg, 0, 255, 0, len));
+      const c = density.charAt(charIndex);
+      if (c == " ") asciiImage += "&nbsp;";
+      else asciiImage += c;
+    }
+    asciiImage += '<br/>';
+  }
+  asciiDiv.html(asciiImage);
+}
+
